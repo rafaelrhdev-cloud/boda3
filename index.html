@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camila &amp; Mateo — Nos casamos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SOBRE DE BIENVENIDA -->
+<div id="sobre" class="sobre-overlay">
+  <div class="sobre">
+    <div class="sobre-sello">
+      <svg viewBox="0 0 100 100" class="sello-svg">
+        <circle cx="50" cy="50" r="46" />
+        <text x="50" y="46" text-anchor="middle" class="sello-letra">C</text>
+        <text x="50" y="68" text-anchor="middle" class="sello-letra-pequena">&amp;M</text>
+      </svg>
+    </div>
+    <p class="sobre-texto">Tienes una invitación</p>
+    <button id="abrir-sobre" class="btn-abrir">Abrir</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <span class="nav-monograma">C&amp;M</span>
+  <div class="nav-links">
+    <a href="#historia">Historia</a>
+    <a href="#detalles">Detalles</a>
+    <a href="#itinerario">Itinerario</a>
+    <a href="#galeria">Galería</a>
+    <a href="#regalos">Regalos</a>
+    <a href="#rsvp" class="nav-cta">Confirmar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <canvas id="particulas" class="hero-particulas"></canvas>
+  <div class="hero-hojas hoja-izq"></div>
+  <div class="hero-hojas hoja-der"></div>
+
+  <div class="hero-foto-frame fade-in-up">
+    <div class="hero-foto" id="foto-novios">
+      <!-- Reemplaza este div por: <img src="assets/pareja.jpg" alt="Camila y Mateo"> -->
+      <span class="hero-foto-inicial">C&amp;M</span>
+    </div>
+    <svg class="hero-foto-arco" viewBox="0 0 200 220" preserveAspectRatio="none">
+      <path d="M2 218 V70 C2 30 40 2 100 2 C160 2 198 30 198 70 V218" />
+    </svg>
+  </div>
+
+  <p class="hero-eyebrow fade-in-up">Nos casamos</p>
+  <h1 class="hero-nombres">
+    <span class="fade-in-up d1">Camila</span>
+    <span class="hero-and fade-in-up d2">&amp;</span>
+    <span class="fade-in-up d3">Mateo</span>
+  </h1>
+  <p class="hero-fecha fade-in-up d4">14 · Noviembre · 2026 — Querétaro, México</p>
+  <a href="#rsvp" class="hero-scroll fade-in-up d5">Confirmar asistencia ↓</a>
+  <div class="hero-borde-superior"></div>
+  <div class="hero-borde-inferior"></div>
+</header>
+
+<!-- CONTADOR -->
+<section class="contador" id="contador">
+  <div class="contador-grid">
+    <div class="contador-item"><span id="cd-dias">00</span><label>Días</label></div>
+    <div class="contador-sep">:</div>
+    <div class="contador-item"><span id="cd-horas">00</span><label>Horas</label></div>
+    <div class="contador-sep">:</div>
+    <div class="contador-item"><span id="cd-min">00</span><label>Minutos</label></div>
+    <div class="contador-sep">:</div>
+    <div class="contador-item"><span id="cd-seg">00</span><label>Segundos</label></div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="seccion historia" id="historia">
+  <div class="divisor"><span></span><svg viewBox="0 0 40 40" class="divisor-icono"><path d="M20 5 C10 15, 10 25, 20 35 C30 25, 30 15, 20 5 Z"/></svg><span></span></div>
+  <p class="seccion-eyebrow">Nuestra historia</p>
+  <h2 class="seccion-titulo">Un sí que empezó con una casualidad</h2>
+  <p class="historia-texto">
+    Nos conocimos un septiembre cualquiera, en una cafetería que ya no existe.
+    Desde entonces no hemos dejado de elegirnos. Hoy, después de muchos caminos
+    compartidos, queremos celebrar contigo el inicio de nuestra historia como
+    familia.
+  </p>
+</section>
+
+<!-- DETALLES -->
+<section class="seccion detalles" id="detalles">
+  <p class="seccion-eyebrow">Detalles</p>
+  <h2 class="seccion-titulo">La celebración</h2>
+  <div class="detalles-grid">
+    <div class="detalle-card">
+      <svg class="detalle-icono" viewBox="0 0 48 48"><path d="M24 4 C13 4 6 13 6 22 C6 33 24 44 24 44 C24 44 42 33 42 22 C42 13 35 4 24 4 Z"/><circle cx="24" cy="20" r="6"/></svg>
+      <h3>Ceremonia</h3>
+      <p>Parroquia de Santa Rosa de Viterbo<br>5:00 p.m.</p>
+    </div>
+    <div class="detalle-card">
+      <svg class="detalle-icono" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="28" rx="2"/><path d="M6 20h36 M14 8v10 M34 8v10"/></svg>
+      <h3>Recepción</h3>
+      <p>Hacienda El Jacal<br>7:00 p.m. en adelante</p>
+    </div>
+    <div class="detalle-card">
+      <svg class="detalle-icono" viewBox="0 0 48 48"><path d="M24 6c-8 6-14 12-14 20a14 14 0 0028 0c0-8-6-14-14-20z"/></svg>
+      <h3>Código de vestimenta</h3>
+      <p>Etiqueta rigurosa<br>Tonos tierra y hueso</p>
+    </div>
+    <div class="detalle-card">
+      <svg class="detalle-icono" viewBox="0 0 48 48"><path d="M24 4v8M24 36v8M4 24h8M36 24h8"/><circle cx="24" cy="24" r="14"/></svg>
+      <h3>Mesa de regalos</h3>
+      <p>Tu presencia es el mejor regalo.<br>Si deseas obsequiarnos algo, hay sobre de novios.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARIO -->
+<section class="seccion itinerario" id="itinerario">
+  <p class="seccion-eyebrow">Itinerario</p>
+  <h2 class="seccion-titulo">Cómo viviremos el día</h2>
+  <div class="linea-tiempo">
+    <div class="lt-item"><span class="lt-hora">4:30 pm</span><span class="lt-punto"></span><span class="lt-texto">Llegada de invitados</span></div>
+    <div class="lt-item"><span class="lt-hora">5:00 pm</span><span class="lt-punto"></span><span class="lt-texto">Ceremonia religiosa</span></div>
+    <div class="lt-item"><span class="lt-hora">6:30 pm</span><span class="lt-punto"></span><span class="lt-texto">Sesión de fotos &amp; cóctel</span></div>
+    <div class="lt-item"><span class="lt-hora">7:30 pm</span><span class="lt-punto"></span><span class="lt-texto">Recepción y cena</span></div>
+    <div class="lt-item"><span class="lt-hora">9:00 pm</span><span class="lt-punto"></span><span class="lt-texto">Primer baile</span></div>
+    <div class="lt-item"><span class="lt-hora">10:00 pm</span><span class="lt-punto"></span><span class="lt-texto">Fiesta hasta el amanecer</span></div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="seccion galeria" id="galeria">
+  <p class="seccion-eyebrow">Galería</p>
+  <h2 class="seccion-titulo">Momentos</h2>
+  <div class="galeria-grid">
+    <div class="galeria-item g1"></div>
+    <div class="galeria-item g2"></div>
+    <div class="galeria-item g3"></div>
+    <div class="galeria-item g4"></div>
+    <div class="galeria-item g5"></div>
+  </div>
+</section>
+
+<!-- MESA DE REGALOS -->
+<section class="seccion regalos" id="regalos">
+  <p class="seccion-eyebrow">Mesa de regalos</p>
+  <h2 class="seccion-titulo">Si deseas obsequiarnos algo</h2>
+  <p class="regalos-sub">Tu presencia y tus buenos deseos son el regalo más grande. Si aun así quieres
+  consentirnos, dejamos estas opciones disponibles.</p>
+
+  <div class="regalos-tabs">
+    <button class="tab-btn activo" data-tab="lista">Lista de regalos</button>
+    <button class="tab-btn" data-tab="deposito">Depósito / Transferencia</button>
+  </div>
+
+  <div class="regalos-panel" id="panel-lista">
+    <div class="regalo-card-grid">
+      <a href="#" class="regalo-card">
+        <span class="regalo-tienda">Liverpool</span>
+        <span class="regalo-evento">Evento No. 51234567</span>
+        <span class="regalo-ir">Ver mesa →</span>
+      </a>
+      <a href="#" class="regalo-card">
+        <span class="regalo-tienda">Amazon</span>
+        <span class="regalo-evento">Lista "Boda Camila &amp; Mateo"</span>
+        <span class="regalo-ir">Ver mesa →</span>
+      </a>
+      <a href="#" class="regalo-card">
+        <span class="regalo-tienda">Sears</span>
+        <span class="regalo-evento">Evento No. 98765432</span>
+        <span class="regalo-ir">Ver mesa →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="regalos-panel oculto" id="panel-deposito">
+    <div class="deposito-card">
+      <p class="deposito-titulo">Sobre de novios</p>
+      <p class="deposito-texto">Si prefieres apoyarnos en nuestra luna de miel, puedes hacerlo aquí:</p>
+      <div class="deposito-dato">
+        <div>
+          <span class="deposito-label">Banco</span>
+          <span class="deposito-valor">BBVA México</span>
+        </div>
+      </div>
+      <div class="deposito-dato">
+        <div>
+          <span class="deposito-label">Titular</span>
+          <span class="deposito-valor">Mateo Hernández Ríos</span>
+        </div>
+      </div>
+      <div class="deposito-dato">
+        <div>
+          <span class="deposito-label">CLABE interbancaria</span>
+          <span class="deposito-valor" id="clabe-valor">0123 4567 8901 2345 67</span>
+        </div>
+        <button class="btn-copiar" data-copiar="clabe-valor">Copiar</button>
+      </div>
+      <p class="deposito-nota">Gracias de antemano por tu generosidad y cariño.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="seccion rsvp" id="rsvp">
+  <p class="seccion-eyebrow">RSVP</p>
+  <h2 class="seccion-titulo">Confirma tu asistencia</h2>
+  <p class="rsvp-sub">Por favor confirma antes del 1 de octubre de 2026. Ingresa el código que viene en tu invitación.</p>
+
+  <div id="rsvp-box" class="rsvp-box">
+
+    <!-- PASO 1: codigo de familia -->
+    <div id="paso-codigo" class="rsvp-paso">
+      <label for="input-codigo">Código de invitación</label>
+      <input type="text" id="input-codigo" placeholder="Ej. RIOS2026" autocomplete="off">
+      <button id="btn-validar" class="btn-dorado">Buscar mi invitación</button>
+      <p id="codigo-error" class="rsvp-error"></p>
+    </div>
+
+    <!-- PASO 2: formulario -->
+    <div id="paso-formulario" class="rsvp-paso oculto">
+      <h3 id="familia-nombre" class="familia-nombre"></h3>
+      <p class="familia-cupo">Tienes <span id="familia-cupo-num"></span> lugar(es) reservado(s).</p>
+      <div id="lista-invitados"></div>
+      <button id="btn-enviar" class="btn-dorado">Confirmar asistencia</button>
+      <p id="form-error" class="rsvp-error"></p>
+    </div>
+
+    <!-- PASO 3: confirmado -->
+    <div id="paso-listo" class="rsvp-paso oculto">
+      <svg class="check-svg" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path class="check-tilde" d="M14 27l8 8 16-16"/></svg>
+      <h3>¡Gracias por confirmar!</h3>
+      <p id="resumen-confirmacion"></p>
+      <p class="rsvp-nota">Tu confirmación ya quedó registrada en este dispositivo.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-monograma">C&amp;M</p>
+  <p>Con todo nuestro cariño, gracias por ser parte de este día.</p>
+  <p class="footer-fecha">14 de noviembre, 2026</p>
+</footer>
+
+<script src="js/familias.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

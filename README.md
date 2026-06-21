@@ -1,48 +1,70 @@
 # Invitación de Boda — Camila & Mateo (Plantilla de venta)
 
 Invitación digital con RSVP, pensada como producto para vender a clientes
-que organizan su boda. Incluye versión 100% funcional sin servidor (para
-mostrar/vender) y backend PHP + MySQL listo para producción.
+que organizan su boda. La parte visual (lo que ve el invitado) es 100%
+estática y funciona sola; el backend PHP + MySQL es opcional y se conecta
+cuando el cliente quiera guardar las confirmaciones en una base de datos real.
 
 ## Estructura del proyecto
 
 ```
 boda-invitacion/
-├── frontend/                  → la página que ve el invitado
-│   ├── index.html
-│   ├── css/style.css
-│   └── js/
-│       ├── familias.js        → datos de EJEMPLO (modo demo, sin servidor)
-│       └── main.js            → toda la lógica (sobre, contador, RSVP)
+├── index.html              → página principal (la que ve el invitado)
+├── css/
+│   └── style.css
+├── js/
+│   ├── familias.js         → datos de EJEMPLO (modo demo, sin servidor)
+│   └── main.js             → toda la lógica (sobre, contador, RSVP, partículas, regalos)
+├── assets/                 → aquí van las fotos reales (pareja, galería)
 │
-├── backend-php/               → backend real para producción
-│   ├── config.php             → credenciales de conexión a MySQL
+├── backend-php/            → backend real para producción (opcional)
+│   ├── config.php          → credenciales de conexión a MySQL
 │   ├── api/
 │   │   ├── validar_familia.php   → GET: busca un código de invitación
 │   │   └── confirmar.php         → POST: guarda la confirmación
-│   └── admin/                 → PANEL OCULTO para el cliente
+│   └── admin/               → PANEL OCULTO para el cliente
 │       ├── login.php
 │       ├── panel.php
 │       ├── logout.php
 │       └── generar_hash.php
 │
-└── database/
-    └── schema.sql             → estructura de tablas + datos de ejemplo
+├── database/
+│   └── schema.sql           → estructura de tablas + datos de ejemplo
+│
+└── README.md
 ```
 
-## 1. Modo demo (para enseñar/vender la plantilla)
+La idea de poner `index.html`, `css/`, `js/` y `assets/` en la raíz es que
+puedas subir el repositorio directo a GitHub (o a GitHub Pages, Netlify,
+Vercel, o la raíz de un hosting normal) y que la página funcione sin tener
+que entrar a ninguna subcarpeta.
 
-Abre `frontend/index.html` directamente en el navegador. No necesita
-servidor ni base de datos: usa los códigos definidos en `js/familias.js`.
+## 1. Subir a GitHub / GitHub Pages
+
+1. Crea el repositorio y sube **todo el contenido tal cual está**, sin
+   mover nada de carpeta.
+2. Si usas GitHub Pages: Settings → Pages → Branch: `main` → Folder: `/ (root)`.
+3. Tu invitación quedará viva en `https://tu-usuario.github.io/tu-repo/`.
+
+GitHub Pages **no ejecuta PHP**, así que en ese caso la página funcionará
+en modo demo (con `js/familias.js`). Si necesitas guardar confirmaciones
+reales en MySQL, sube el proyecto a un hosting que sí soporte PHP (ver
+punto 3).
+
+## 2. Modo demo (para enseñar/vender la plantilla)
+
+Abre `index.html` directamente en el navegador, o súbelo a cualquier
+hosting estático. No necesita servidor ni base de datos: usa los códigos
+definidos en `js/familias.js`.
 
 **Códigos de prueba:**
 
 | Código     | Familia              | Lugares |
-|------------|----------------------|---------|
-| RIOS2026   | Familia Ríos         | 4       |
-| TORRES5    | Familia Torres       | 5       |
-| LUNA1      | Invitado especial    | 1       |
-| GOMEZ3     | Familia Gómez        | 3       |
+|------------|-----------------------|---------|
+| RIOS2026   | Familia Ríos          | 4       |
+| TORRES5    | Familia Torres        | 5       |
+| LUNA1      | Invitado especial     | 1       |
+| GOMEZ3     | Familia Gómez         | 3       |
 
 El bloqueo "una confirmación por dispositivo" funciona en este modo
 mediante `localStorage`: una vez que alguien confirma en su navegador,
@@ -54,7 +76,10 @@ local del sitio o ejecuta en la consola del navegador:
 localStorage.removeItem("boda_rsvp_confirmacion_v1")
 ```
 
-## 2. Modo real con MySQL (lo que entregas al cliente final)
+## 3. Modo real con MySQL (lo que entregas al cliente final)
+
+Este modo necesita un hosting con PHP + MySQL (cPanel, Hostinger, etc.),
+no funciona en GitHub Pages.
 
 ### Paso 1 — Crear la base de datos
 Importa el archivo SQL:
@@ -78,12 +103,12 @@ define('DB_PASS', 'password_real');
 ```
 
 ### Paso 3 — Subir todo al hosting
-Sube las carpetas `frontend/` y `backend-php/` al servidor (puedes
-ponerlas en la misma carpeta pública, por ejemplo
-`public_html/frontend` y `public_html/backend-php`).
+Sube **todo el contenido de la carpeta** (`index.html`, `css/`, `js/`,
+`assets/`, `backend-php/`, `database/`) a la raíz pública del hosting
+(por ejemplo `public_html/`).
 
 ### Paso 4 — Conectar el frontend al backend real
-En `frontend/js/main.js`, cambia esta línea:
+En `js/main.js`, cambia esta línea:
 
 ```js
 const API_BASE = null;
@@ -117,7 +142,7 @@ INSERT INTO invitados (familia_id, nombre) VALUES
 primero la familia, anota su `id`, y luego inserta los invitados con ese
 `id` real.)
 
-## 3. Panel oculto del cliente (ver invitados confirmados)
+## 4. Panel oculto del cliente (ver invitados confirmados)
 
 **Ubicación:** `backend-php/admin/login.php`
 
@@ -146,13 +171,13 @@ VALUES ('admin', 'PEGA_AQUI_EL_HASH');
 El panel muestra: total de invitados, cuántos confirmaron, cuántos no
 asistirán, y el detalle por familia con fecha de confirmación.
 
-## 4. Personalización para cada venta
+## 5. Personalización para cada venta
 
 Lo que normalmente cambia por cliente:
 - Nombres de los novios, fecha, lugares (`index.html`)
 - Foto de los novios: reemplaza el `<div id="foto-novios">` en el hero por
   `<img src="assets/pareja.jpg" alt="...">` (la guía está comentada en el
-  propio HTML) y coloca la imagen en `frontend/assets/`.
+  propio HTML) y coloca la imagen en `assets/`.
 - Mesa de regalos: edita la sección `#regalos` — tiene una pestaña con
   tarjetas de tiendas/listas de regalo y otra con los datos bancarios
   para depósito/transferencia (con botón "Copiar" para la CLABE).
@@ -160,12 +185,12 @@ Lo que normalmente cambia por cliente:
 - Tipografías (Google Fonts en el `<head>` de `index.html`)
 - Fotos reales en la sección de galería (reemplazar los `background` de
   `.galeria-item` en CSS por `background-image: url(...)`)
-- Códigos y nombres de familias (base de datos o `familias.js` en demo)
+- Códigos y nombres de familias (base de datos o `js/familias.js` en demo)
 - Usuario/contraseña del panel privado
 - Las partículas doradas del hero son 100% CSS/canvas (`hero-particulas`
-  en `main.js`); puedes ajustar cantidad y color ahí mismo.
+  en `js/main.js`); puedes ajustar cantidad y color ahí mismo.
 
-## 5. Notas de seguridad para producción
+## 6. Notas de seguridad para producción
 
 - Cambia la contraseña de `generar_hash.php` y bórralo después de usarlo.
 - Sirve el sitio por HTTPS.
